@@ -42,5 +42,3 @@ Nb_parents = 4
 
 if crossover_type == "bi-parent":
     Nb_parents = 2
-else:
-    pass

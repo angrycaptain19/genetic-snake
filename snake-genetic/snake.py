@@ -232,10 +232,9 @@ class Snake():
 			clock.tick(settings.fps)
 
 			for event in pygame.event.get():
-				if event.type == pygame.KEYDOWN:
-					if event.key == pygame.K_ESCAPE:
-						pygame.quit()
-						exit()
+				if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+					pygame.quit()
+					exit()
 				if event.type == pygame.QUIT:
 					exit() 
 
@@ -252,7 +251,7 @@ class Snake():
 					self.direction = (self.direction + 3) % 4
 				elif outputs == 2: # Right from current direction
 					self.direction = (self.direction + 1) % 4
-				
+
 				if not self.step(self.direction):
 					break
 
@@ -277,7 +276,7 @@ class Snake():
 				# print(self.snake)
 
 				# Kill Individual if it is looping
-				
+
 				if self.last_fruit_time > 10 :
 					# print('Killed to avoid loop')
 					self.death_type = 50
@@ -311,8 +310,8 @@ class Snake():
 				LastFruit = font.render("Time since last fruit : " + str(round(self.last_fruit_time, 2)), False, colors.grey)
 				self.s.blit(LastFruit, (15, 60))
 
-				
-				
+
+
 				pygame.draw.rect(self.s, colors.grey, pygame.Rect(12, 0, 157, 75), 2)
 
 
@@ -322,7 +321,7 @@ class Snake():
 
 				SelectionSett = font.render("Selection : " + str(settings.selection_type), False, colors.grey)
 				self.s.blit(SelectionSett, (15, 95))
-				
+
 				SelectionSett = font.render("Crossover : " + str(settings.crossover_type), False, colors.grey)
 				self.s.blit(SelectionSett, (15, 110))
 
